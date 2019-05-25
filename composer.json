@@ -58,6 +58,8 @@
         }
     },
     "require-dev": {
+        "hautelook/alice-bundle": "^2.5",
+        "symfony/test-pack": "^1.0",
         "symfony/web-server-bundle": "4.2.*"
     }
 }
