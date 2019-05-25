@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
+        "doctrine/doctrine-migrations-bundle": "^2.0",
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",
         "symfony/flex": "^1.1",
@@ -59,6 +60,7 @@
     },
     "require-dev": {
         "hautelook/alice-bundle": "^2.5",
+        "symfony/maker-bundle": "^1.11",
         "symfony/test-pack": "^1.0",
         "symfony/web-server-bundle": "4.2.*"
     }

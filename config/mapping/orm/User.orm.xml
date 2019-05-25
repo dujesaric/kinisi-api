@@ -1,0 +1,21 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                   https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+    <entity name="App\Entity\User" table="user" repository-class="App\Repository\UserRepository">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="email" type="string" length="255" nullable="false"/>
+        <field name="enabled" type="boolean" nullable="false"/>
+        <field name="firstName" type="string" length="255" nullable="false"/>
+        <field name="lastName" type="string" length="255" nullable="false"/>
+        <field name="gender" type="string" length="255" nullable="false"/>
+        <field name="roles" type="json_array"/>
+        <field name="plainPassword" type="string" length="255" nullable="false"/>
+        <field name="emailVerificationToken" type="string" length="255" nullable="true"/>
+        <field name="verifiedAt" type="datetime" nullable="true"/>
+        <field name="lastLogin" type="datetime" nullable="true"/>
+        <field name="passwordResetToken" type="string" length="255" nullable="true"/>
+    </entity>
+</doctrine-mapping>
