@@ -1,8 +1,11 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: argon2i
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
 #        in_memory: { memory: ~ }
-        users:
+        user_provider:
             entity:
                 class: 'App\Entity\User'
                 property: 'email'
@@ -11,8 +14,26 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern: ^/api/
+            stateless: true
             anonymous: true
-
+            json_login:
+                check_path: /api/login
+                username_path: email
+                password_path: plainPassword
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        api:
+            pattern: ^/api/
+            stateless: true
+            anonymous: true
+            provider: user_provider
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
