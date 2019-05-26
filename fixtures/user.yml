@@ -1,0 +1,9 @@
+App\Entity\User:
+    user_{1..10}:
+        email: <email()>
+        enabled: 1
+        firstName: <firstName()>
+        lastName: <lastName()>
+        gender: 'male'
+        roles: [ROLE_USER]
+        plainPassword: 'admin'
