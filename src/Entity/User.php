@@ -3,15 +3,18 @@
 namespace App\Entity;
 
 use App\Entity\Embeddable\Name;
+use Gedmo\Timestampable\Traits\Timestampable;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface
 {
+    use Timestampable;
+
     private $id;
 
     private $email;
 
-    private $enabled;
+    private $enabled = true;
 
     private $firstName;
 
