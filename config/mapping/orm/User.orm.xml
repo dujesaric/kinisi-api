@@ -12,7 +12,7 @@
         <field name="lastName" type="string" length="255" nullable="false"/>
         <field name="gender" type="string" length="255" nullable="false"/>
         <field name="roles" type="json_array"/>
-        <field name="plainPassword" type="string" length="255" nullable="false"/>
+        <field name="password" type="string" length="255" nullable="false"/>
         <field name="emailVerificationToken" type="string" length="255" nullable="true"/>
         <field name="verifiedAt" type="datetime" nullable="true"/>
         <field name="lastLogin" type="datetime" nullable="true"/>
