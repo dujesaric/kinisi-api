@@ -2,14 +2,9 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Embeddable\Name;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ApiResource()
- */
 class User implements UserInterface
 {
     private $id;
@@ -24,9 +19,13 @@ class User implements UserInterface
 
     private $gender;
 
+    private $birthday;
+
     private $roles = [];
 
     private $plainPassword;
+
+    private $repeatPassword;
 
     private $password;
 
@@ -72,9 +71,11 @@ class User implements UserInterface
         return $this->firstName;
     }
 
-    public function setFirstName($firstName): void
+    public function setFirstName($firstName): self
     {
         $this->firstName = $firstName;
+
+        return $this;
     }
 
     public function getLastName()
@@ -82,9 +83,11 @@ class User implements UserInterface
         return $this->lastName;
     }
 
-    public function setLastName($lastName): void
+    public function setLastName($lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
     }
 
     public function getGender(): ?string
@@ -95,6 +98,18 @@ class User implements UserInterface
     public function setGender(string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getBirthday(): \DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
 
         return $this;
     }
@@ -119,6 +134,18 @@ class User implements UserInterface
     public function setPlainPassword(?string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    public function getRepeatPassword(): ?string
+    {
+        return $this->repeatPassword;
+    }
+
+    public function setRepeatPassword(?string $repeatPassword): self
+    {
+        $this->repeatPassword = $repeatPassword;
 
         return $this;
     }

@@ -11,6 +11,7 @@
         <field name="firstName" type="string" length="255" nullable="false"/>
         <field name="lastName" type="string" length="255" nullable="false"/>
         <field name="gender" type="string" length="255" nullable="false"/>
+        <field name="birthday" type="datetime" nullable="false"/>
         <field name="roles" type="json_array"/>
         <field name="password" type="string" length="255" nullable="false"/>
         <field name="emailVerificationToken" type="string" length="255" nullable="true"/>
