@@ -1,9 +1,19 @@
 App\Entity\User:
-    user_{1..10}:
+    user_1:
+        email: 'lution.it@gmail.com'
+        enabled: 1
+        firstName: 'Vaso'
+        lastName: 'Iveljić'
+        gender: 'male'
+        birthday: '<dateTime("1996-08-03")>'
+        roles: [ROLE_USER]
+        plainPassword: 'admin'
+    user_{2..10}:
         email: <email()>
         enabled: 1
         firstName: <firstName()>
         lastName: <lastName()>
-        gender: 'male'
+        gender: '<randomElement(["male","female"])>'
+        birthday: '<dateTime("2000-01-01")>'
         roles: [ROLE_USER]
         plainPassword: 'admin'

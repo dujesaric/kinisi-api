@@ -24,11 +24,11 @@ class User implements UserInterface
 
     private $birthday;
 
-    private $roles = [];
+    private $roles = ['ROLE_USER'];
 
     private $plainPassword;
 
-    private $repeatPassword;
+    private $repeatedPassword;
 
     private $password;
 
@@ -141,14 +141,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRepeatPassword(): ?string
+    public function getRepeatedPassword(): ?string
     {
-        return $this->repeatPassword;
+        return $this->repeatedPassword;
     }
 
-    public function setRepeatPassword(?string $repeatPassword): self
+    public function setRepeatedPassword(?string $repeatedPassword): self
     {
-        $this->repeatPassword = $repeatPassword;
+        $this->repeatedPassword = $repeatedPassword;
 
         return $this;
     }
