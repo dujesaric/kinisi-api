@@ -29,8 +29,8 @@ install:
     - ./bin/phpunit install
 
 script:
-    - ./bin/console doctrine:database:create --env=test --skip-sync -vvv --no-interaction
-    - ./bin/console doctrine:schema:create --env=test --skip-sync -vvv --no-interaction
+    - ./bin/console doctrine:database:create --env=test -vvv --no-interaction
+    - ./bin/console doctrine:schema:create --env=test -vvv --no-interaction
     - ./bin/console hautelook:fixtures:load --env=test --no-interaction
     - ./bin/phpunit
     # this checks that the source code follows the Symfony Code Syntax rules
