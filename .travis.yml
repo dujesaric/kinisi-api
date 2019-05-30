@@ -45,3 +45,6 @@ script:
 
     # this checks that Doctrine's mapping configurations are valid
     - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+
+notifications:
+    slack: lutionworkspace:wJJXiYn1xqbAFHqsGRtMzZv6
