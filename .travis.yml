@@ -20,6 +20,9 @@ matrix:
     allow_failures:
         - php: nightly
 
+addons:
+    mariadb: "10.2"
+
 before_install:
     - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
     - composer self-update
