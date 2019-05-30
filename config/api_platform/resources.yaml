@@ -1,0 +1,16 @@
+resources:
+    App\Entity\User:
+        itemOperations:
+            get: ~
+            put:
+                validation_groups: [Profile_update, Default]
+#            anonymize: ~
+        collectionOperations:
+            get: ~
+            post:
+                validation_groups: [Registration, Default]
+        attributes:
+            normalization_context:
+                groups: ['user_read']
+            denormalization_context:
+                groups: ['user_write']

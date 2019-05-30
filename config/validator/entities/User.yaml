@@ -1,0 +1,26 @@
+App\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        email:
+            - Email: ~
+        firstName:
+            - NotBlank: ~
+        lastName:
+            - NotBlank: ~
+        gender:
+            - Choice:
+                choices:  [Male, Female, Other]
+                message:  Choose a valid gender.
+        birthday:
+            - DateTime: ~
+            - NotBlank: ~
+        plainPassword:
+            - NotBlank:
+                groups: [Registration]
+            - Length:
+                min: 6
+                groups: [Registration, Profile_update]
+        repeatedPassword:
+            - NotBlank:
+                groups: [Registration]

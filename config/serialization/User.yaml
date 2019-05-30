@@ -1,0 +1,16 @@
+App\Entity\User:
+    attributes:
+        email:
+            groups: ['user_read', 'user_write']
+        firstName:
+            groups: ['user_read', 'user_write']
+        lastName:
+            groups: ['user_read', 'user_write']
+        gender:
+            groups: ['user_read', 'user_write']
+        birthday:
+            groups: ['user_read', 'user_write']
+        plainPassword:
+            groups: ['user_write']
+        repeatedPassword:
+            groups: ['user_write']

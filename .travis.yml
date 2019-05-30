@@ -1,0 +1,50 @@
+language: php
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+        - ./bin/.phpunit
+
+env:
+    global:
+        - SYMFONY_PHPUNIT_DIR=./bin/.phpunit
+        - SYMFONY_DEPRECATIONS_HELPER=29
+
+matrix:
+    fast_finish: true
+    include:
+        - php: 7.2
+        - php: 7.3
+
+addons:
+    mariadb: "10.2"
+
+before_install:
+    - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
+    - composer self-update
+
+install:
+    - composer install
+    - ./bin/phpunit install
+
+script:
+    - ./bin/console doctrine:database:create --env=test -vvv --no-interaction
+    - ./bin/console doctrine:schema:create --env=test -vvv --no-interaction
+    - ./bin/console hautelook:fixtures:load --env=test --no-interaction
+    - ./bin/phpunit
+
+    # this checks that the YAML config files contain no syntax errors
+    - ./bin/console lint:yaml config
+
+    # this checks that the Twig template files contain no syntax errors
+    - ./bin/console lint:twig templates
+
+    # this checks that the XLIFF translations contain no syntax errors
+    #- ./bin/console lint:xliff translations
+
+    # this checks that Doctrine's mapping configurations are valid
+    - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+
+notifications:
+    slack: lutionworkspace:wJJXiYn1xqbAFHqsGRtMzZv6
